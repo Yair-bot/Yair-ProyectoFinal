@@ -1,0 +1,159 @@
+<!doctype html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Migraciones</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+<header>
+  <span class="logo">Estado &amp; Instituciones</span>
+  
+  <!-- Menú hamburguesa para móviles -->
+  <label for="menu-toggle" class="menu-button">
+    <span></span>
+    <span></span>
+    <span></span>
+  </label>
+  <input type="checkbox" id="menu-toggle">
+  
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="colegios.html">Colegios</a>
+    <a href="comisarias.html">Comisarías</a>
+    <a href="migraciones.html" aria-current="page">Migraciones</a>
+    <a href="ministerios_municipalidades.html">Ministerios</a>
+    
+    <!-- Menú desplegable para Servicios -->
+    <div class="dropdown">
+      <button class="dropdown-btn">Servicios ▼</button>
+      <div class="dropdown-content">
+        <a href="servicios.html">Servicios Generales</a>
+        <a href="calculadora.html">Calculadora</a>
+        <a href="turnos.html" aria-current="page">Sistema de Turnos</a>
+        <a href="denuncias.html">Denuncias</a>
+      </div>
+    </div>
+    
+    <!-- Menú desplegable para Información -->
+    <div class="dropdown">
+      <button class="dropdown-btn">Información ▼</button>
+      <div class="dropdown-content">
+        <a href="noticias.html">Noticias</a>
+        <a href="estadisticas.html">Estadísticas</a>
+        <a href="estadisticas-avanzadas.html">Estadísticas Av.</a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+  <main class="container">
+    <section class="section">
+      <h2 class="animated-slide">Requisitos y citas</h2>
+      <div class="table-responsive card">
+        <table>
+          <thead>
+              <tr>
+                  <th>Trámite</th>
+                  <th>Requisitos</th>
+                  <th>Tiempo estimado</th>
+              </tr>
+          </thead>
+          <tbody>
+            <tr>
+                <td>Permiso temporal</td>
+                <td>Pasaporte, formulario, fotos</td>
+                <td>5 días</td>
+            </tr>
+            <tr>
+                <td>Renovación de documento</td>
+                <td>Documento anterior, pago</td>
+                <td>10 días</td>
+            </tr>
+            <tr>
+                <td>Cita consular</td>
+                <td>Formulario, correo</td>
+                <td>Variable</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="animated-slide">Solicitar cita</h2>
+      <form>
+        <label class="required">Nombre</label>
+        <input type="text" required>
+        <label class="required">Tipo de trámite</label>
+        <select required>
+          <option>Permiso temporal</option>
+          <option>Renovación</option>
+          <option>Cita consular</option>
+        </select>
+        <label>Fecha preferida</label>
+        <input type="date">
+        <label>Comentarios</label>
+        <textarea></textarea>
+        <button type="submit">Solicitar cita</button>
+      </form>
+    </section>
+
+    <section class="section">
+      <h2 class="animated-slide">Progreso de documentación</h2>
+      <p>Ejemplo simple de barra de progreso:</p>
+      <progress id="prog" value="25" max="100" style="width:100%; height:20px;">
+      </progress>
+      <p>
+          <small id="progText">25% procesado</small>
+      </p>
+      <button class="secondary" onclick="advance()">Actualizar progreso (demo)</button>
+
+    </section>
+  </main>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Barra de progreso interactiva
+        function advance() {
+            const progress = document.getElementById('prog');
+            const text = document.getElementById('progText');
+
+            if (progress && text) {
+                let value = parseInt(progress.value) + 25;
+                if (value > 100) value = 0;
+
+                progress.value = value;
+                text.textContent = value + '% procesado';
+
+                // Cambiar color según progreso
+                if (value >= 75) {
+                    progress.style.backgroundColor = '#5cb85c';
+                } else if (value >= 50) {
+                    progress.style.backgroundColor = '#f0ad4e';
+                } else {
+                    progress.style.backgroundColor = '#0b3d91';
+                }
+            }
+        }
+
+        // Hacer la función global para el onclick
+        window.advance = advance;
+
+        // Validación de formulario de citas
+        const formCita = document.querySelector('form');
+        if (formCita) {
+            formCita.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('✅ Cita solicitada\n\nRecibirá confirmación por correo.');
+                this.reset();
+            });
+        }
+    });
+    </script>
+
+  <footer>
+    <p>Migraciones</p>
+  </footer>
+</body>
+</html>

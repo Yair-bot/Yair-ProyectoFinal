@@ -1,0 +1,132 @@
+<!doctype html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Ministerios y Municipalidades</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+<header>
+  <span class="logo">Estado &amp; Instituciones</span>
+  
+  <!-- Menú hamburguesa para móviles -->
+  <label for="menu-toggle" class="menu-button">
+    <span></span>
+    <span></span>
+    <span></span>
+  </label>
+  <input type="checkbox" id="menu-toggle">
+  
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="colegios.html">Colegios</a>
+    <a href="comisarias.html">Comisarías</a>
+    <a href="migraciones.html">Migraciones</a>
+    <a href="ministerios_municipalidades.html" aria-current="page">Ministerios</a>
+    
+    <!-- Menú desplegable para Servicios -->
+    <div class="dropdown">
+      <button class="dropdown-btn">Servicios ▼</button>
+      <div class="dropdown-content">
+        <a href="servicios.html">Servicios Generales</a>
+        <a href="calculadora.html">Calculadora</a>
+        <a href="turnos.html" aria-current="page">Sistema de Turnos</a>
+        <a href="denuncias.html">Denuncias</a>
+      </div>
+    </div>
+    
+    <!-- Menú desplegable para Información -->
+    <div class="dropdown">
+      <button class="dropdown-btn">Información ▼</button>
+      <div class="dropdown-content">
+        <a href="noticias.html">Noticias</a>
+        <a href="estadisticas.html">Estadísticas</a>
+        <a href="estadisticas-avanzadas.html">Estadísticas Av.</a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+  <main class="container">
+    <section class="section">
+      <h2 class="animated-slide">Ministerios (ejemplo)</h2>
+      <ul>
+        <li>Ministerio de Salud</li>
+        <li>Ministerio de Educación</li>
+        <li>Ministerio del Interior</li>
+      </ul>
+      <p>Enlaces a servicios y trámites disponibles en línea.</p>
+    </section>
+
+    <section class="section">
+      <h2 class="animated-slide">Municipalidades - Atención al vecino</h2>
+      <form>
+        <label class="required">Nombre</label>
+        <input type="text" required>
+        <label class="required">Distrito</label>
+        <input type="text" required>
+        <label>Tipo de reclamo</label>
+        <select>
+          <option>Alumbrado</option>
+          <option>Vías</option>
+          <option>Limpieza</option>
+          <option>Otra</option>
+        </select>
+        <label>Descripción</label>
+        <textarea>
+        </textarea>
+        <button type="submit">Enviar</button>
+      </form>
+    </section>
+
+    <section class="section">
+      <h2 class="animated-slide">Blog / Noticias</h2>
+      <article class="card">
+        <h3>Campaña de seguridad ciudadana</h3>
+        <p>Evento municipal de concientización sobre seguridad ciudadana. Fecha: 15 de agosto.</p>
+      </article>
+    </section>
+  </main>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Contador de caracteres para descripción de reclamos
+        const textarea = document.querySelector('textarea');
+        if (textarea) {
+            const contador = document.createElement('div');
+            contador.innerHTML = '<small>Caracteres: <span id="charCount">0</span>/500</small>';
+            contador.style.marginTop = '5px';
+            contador.style.color = '#666';
+
+            textarea.parentNode.insertBefore(contador, textarea.nextSibling);
+
+            textarea.addEventListener('input', function() {
+                const count = this.value.length;
+                document.getElementById('charCount').textContent = count;
+
+                if (count > 500) {
+                    this.style.borderColor = '#e94e1b';
+                } else {
+                    this.style.borderColor = '';
+                }
+            });
+        }
+
+        // Validación de formulario de reclamos
+        const formReclamo = document.querySelector('form');
+        if (formReclamo) {
+            formReclamo.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('✅ Reclamo enviado\n\nSerá atendido en 48 horas.');
+                this.reset();
+                document.getElementById('charCount').textContent = '0';
+            });
+        }
+    });
+    </script>
+    
+  <footer>
+    <p>Ministerios / Municipalidades</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,165 @@
+<!doctype html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Comisarías & Seguridad Ciudadana</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+<header>
+  <span class="logo">Estado &amp; Instituciones</span>
+  
+  <!-- Menú hamburguesa para móviles -->
+  <label for="menu-toggle" class="menu-button">
+    <span></span>
+    <span></span>
+    <span></span>
+  </label>
+  <input type="checkbox" id="menu-toggle">
+  
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="colegios.html">Colegios</a>
+    <a href="comisarias.html" aria-current="page">Comisarías</a>
+    <a href="migraciones.html">Migraciones</a>
+    <a href="ministerios_municipalidades.html">Ministerios</a>
+    
+    <!-- Menú desplegable para Servicios -->
+    <div class="dropdown">
+      <button class="dropdown-btn">Servicios ▼</button>
+      <div class="dropdown-content">
+        <a href="servicios.html">Servicios Generales</a>
+        <a href="calculadora.html">Calculadora</a>
+        <a href="turnos.html" aria-current="page">Sistema de Turnos</a>
+        <a href="denuncias.html">Denuncias</a>
+      </div>
+    </div>
+    
+    <!-- Menú desplegable para Información -->
+    <div class="dropdown">
+      <button class="dropdown-btn">Información ▼</button>
+      <div class="dropdown-content">
+        <a href="noticias.html">Noticias</a>
+        <a href="estadisticas.html">Estadísticas</a>
+        <a href="estadisticas-avanzadas.html">Estadísticas Av.</a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+  <main class="container">
+    <section class="section">
+      <h2 style="animation: fadeInUp 1s ease;">Comisarías - Información y turnos</h2>
+      <p>En esta sección se muestra un ejemplo de tabla con comisarías y un formulario para reportar un incidente.</p>
+      <div class="table-responsive card">
+        <table>
+          <thead>
+              <tr>
+                  <th>Distrito</th>
+                  <th>Comisaría</th>
+                  <th>Teléfono</th>
+                  <th>Horario</th>
+              </tr>
+          </thead>
+          <tbody>
+            <tr>
+                <td>Arequipa</td>
+                <td>Comisaría Centro</td>
+                <td>+51 123 456</td>
+                <td>24 horas</td>
+            </tr>
+            <tr>
+                <td>Yanahuara</td>
+                <td>Comisaría Yanahuara</td>
+                <td>+51 987 654</td>
+                <td>24 horas</td>
+            </tr>
+            <tr>
+                <td>Cercado</td>
+                <td>Comisaría Cercado</td>
+                <td>+51 555 444</td>
+                <td>24 horas</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 style="animation: fadeInUp 1s ease;">Formulario de denuncia / reporte</h2>
+      <form id="denunciaForm">
+        <label class="required">Nombre del denunciante</label>
+        <input type="text" id="denunciante" required>
+        <label>Teléfono</label>
+        <input type="text" id="telefono">
+        <label class="required">Distrito</label>
+        <select id="distrito" required>
+          <option value="">-- Seleccionar --</option>
+          <option>Arequipa</option>
+          <option>Yanahuara</option>
+          <option>Cercado</option>
+        </select>
+        <label class="required">Descripción del incidente</label>
+        <textarea id="desc" required>
+        </textarea>
+        <button type="submit">Enviar denuncia</button>
+      </form>
+
+    </section>
+
+    <section class="section">
+      <h2 style="animation: fadeInUp 1s ease;">Video de seguridad ciudadana</h2>
+      <video controls width="100%" style="max-width:560px;">
+        <source src="video/videoComisaria.mp4" type="video/webm">
+      </video>
+    </section>
+
+  </main>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Validación de formulario de denuncia
+        const formDenuncia = document.getElementById('denunciaForm');
+        if (formDenuncia) {
+            formDenuncia.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                const denunciante = document.getElementById('denunciante').value;
+                const descripcion = document.getElementById('desc').value;
+
+                if (!denunciante || !descripcion) {
+                    alert('❌ Complete todos los campos requeridos');
+                    return;
+                }
+
+                if (descripcion.length < 10) {
+                    alert('❌ La descripción debe tener al menos 10 caracteres');
+                    return;
+                }
+
+                alert('🚨 Denuncia registrada\n\nNúmero de caso: COM-' + Date.now());
+                this.reset();
+            });
+        }
+
+        // Contador de comisarías
+        const comisarias = document.querySelectorAll('table tbody tr');
+        const contador = document.createElement('div');
+        contador.innerHTML = `<p><strong>Comisarías listadas: ${comisarias.length}</strong></p>`;
+        contador.style.marginTop = '10px';
+        contador.style.padding = '8px';
+        contador.style.background = '#fff0f0';
+        contador.style.borderRadius = '4px';
+
+        const tabla = document.querySelector('table');
+        if (tabla) {
+            tabla.parentNode.insertBefore(contador, tabla.nextSibling);
+        }
+    });
+    </script>
+    
+  <footer>
+    <p>Comisarías & Seguridad Ciudadana</p>
+  </footer>
+</body>
+</html>

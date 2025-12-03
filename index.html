@@ -1,0 +1,370 @@
+<!doctype html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Portal informativo sobre Estado e Instituciones">
+  <title>Estado e Instituciones - Inicio</title>
+  <link rel="stylesheet" href="index.css">
+  <script src="script.js"></script>
+</head>
+
+<header>
+  <span class="logo">Estado &amp; Instituciones</span>
+  
+  <!-- Menú hamburguesa para móviles -->
+  <label for="menu-toggle" class="menu-button">
+    <span></span>
+    <span></span>
+    <span></span>
+  </label>
+  <input type="checkbox" id="menu-toggle">
+  
+  <nav>
+    <a href="index.html" aria-current="page">Inicio</a>
+    <a href="colegios.html">Colegios</a>
+    <a href="comisarias.html">Comisarías</a>
+    <a href="migraciones.html">Migraciones</a>
+    <a href="ministerios_municipalidades.html">Ministerios</a>
+    
+    <!-- Menú desplegable para Servicios -->
+    <div class="dropdown">
+      <button class="dropdown-btn">Servicios ▼</button>
+      <div class="dropdown-content">
+        <a href="servicios.html">Servicios Generales</a>
+        <a href="calculadora.html">Calculadora</a>
+        <a href="turnos.html">Sistema de Turnos</a>
+        <a href="denuncias.html">Denuncias</a>
+      </div>
+    </div>
+    
+    <!-- Menú desplegable para Información -->
+    <div class="dropdown">
+      <button class="dropdown-btn">Información ▼</button>
+      <div class="dropdown-content">
+        <a href="noticias.html">Noticias</a>
+        <a href="estadisticas.html">Estadísticas</a>
+        <a href="estadisticas-avanzadas.html">Estadísticas Av.</a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+
+
+    <section class="hero">
+      <img src="img/portada.png" alt="Banner Estado e Instituciones" class="pulse">
+      <div class="intro">
+        <h1>Estado e Instituciones al servicio de la ciudadanía</h1>
+        <p>El Estado peruano cuenta con diversas instituciones públicas que garantizan la seguridad, la organización profesional, la migración ordenada y la gestión municipal y ministerial.</p>
+        <p style="color:#0b3d91; font-size:16px;">Leer mas.</p>
+        <a class="shift-right" href="#contacto">Contactar</a>
+      </div>
+    </section>
+
+    <section class="section marq">
+      <marquee behavior="scroll" direction="left">Bienvenido al portal informativo sobre instituciones del Estado Peruano.</marquee>
+    </section>
+
+    <section class="section">
+      <h2 class="animated-slide">Instituciones del Estado</h2>
+      <div class="grid-two">
+        <article class="card">
+          <h3>Servicios al ciudadano</h3>
+          <ul>
+            <li>Información sobre colegios profesionales</li>
+            <li>Comisarías y seguridad ciudadana</li>
+            <li>Migraciones</li>
+            <li>Ministerios y municipalidades</li>
+          </ul>
+        </article>
+
+        <aside class="aside card">
+          <h4>Enlaces rápidos</h4>
+          <a href="colegios.html">→ Colegios Profesionales</a><br>
+          <a href="comisarias.html">→ Comisarías y Seguridad Ciudadana</a><br>
+          <a href="migraciones.html">→ Migraciones</a><br>
+          <a href="ministerios_municipalidades.html">→ Ministerios / Municipalidades</a>
+        </aside>
+      </div>
+    </section>
+
+    <section id="contacto" class="section">
+      <h2 class="animated-slide">Contacto</h2>
+      <form onsubmit="event.preventDefault(); alert('Formulario enviado (ejemplo).');">
+        <label class="required">Nombre</label>
+        <input type="text" id="nombre" required>
+        <label class="required">Correo</label>
+        <input type="email" id="correo" required>
+        <label>Asunto</label>
+        <select>
+          <option>Consulta general</option>
+          <option>Denuncia</option>
+          <option>Requerimiento</option>
+        </select>
+        <label>Mensaje</label>
+        <textarea placeholder="Escribe tu mensaje..."></textarea>
+        <button type="submit">Enviar</button>
+      </form>
+    </section>
+
+    <section class="section">
+      <h2 class="animated-slide" class="text-center">Multimedia y Recursos
+      </h2>
+      <div class="grid">
+        <div class="card">
+          <div class="card-media">
+              <video controls width="600" preload="none">
+                <source src="video/videoIndex.mp4" type="video/webm">
+                Tu navegador no soporta video.
+              </video>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Video institucional</h3>
+            <p class="card-text">Campaña de defensa pública.</p>
+            <div class="meta">
+                <span>Formato: MP4</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-media">
+              <audio controls>
+                <source src="video/audioIndex.mp3" type="audio/mpeg">
+                Tu navegador no soporta audio.
+              </audio>
+          <div class="card-body">
+            <h3 class="card-title">Audio informativo</h3>
+            <div class="meta">
+                <span>Audio: MP3</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card animated-loop">
+          <div class="card-media">
+              <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=-77.05,-12.12,-76.95,-12.02&layer=mapnik" width="100%" height="320" style="border:1px solid #ddd;" title="mapa"></iframe>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Mapa interactivo</h3>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+    // Validación básica del formulario de contacto
+    document.addEventListener('DOMContentLoaded', function() {
+        const formContacto = document.querySelector('form');
+        if (formContacto) {
+            formContacto.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                const nombre = document.getElementById('nombre').value;
+                const correo = document.getElementById('correo').value;
+
+                if (!nombre || !correo) {
+                    alert('Por favor complete todos los campos requeridos');
+                    return;
+                }
+
+                // Simular envío
+                alert('✅ Mensaje enviado correctamente\n\nGracias por su contacto, ' + nombre);
+                formContacto.reset();
+            });
+        }
+
+        // Contador de instituciones
+        const contador = document.createElement('div');
+        contador.innerHTML = '<p><strong>Instituciones disponibles: 8</strong></p>';
+        contador.style.marginTop = '15px';
+        contador.style.padding = '10px';
+        contador.style.background = '#f0f9ff';
+        contador.style.borderRadius = '5px';
+
+        const seccionInstituciones = document.querySelector('.section h2');
+        if (seccionInstituciones) {
+            seccionInstituciones.parentNode.insertBefore(contador, seccionInstituciones.nextSibling);
+        }
+    });
+    </script>
+
+    <section class="section">
+      <h2 class="animated-slide">Dashboard de Gestión Institucional</h2>
+
+      <!-- Tarjetas de Resumen Rápido -->
+      <div class="card">
+        <h3>📈 Resumen General del Sistema</h3>
+        <div id="resumenDashboard" class="grid">
+          <!-- Se llenará con JavaScript -->
+        </div>
+      </div>
+
+      <!-- Sistema de Gestión de Datos en Tiempo Real -->
+      <div class="card">
+        <h3>🔄 Sistema de Gestión de Datos</h3>
+        
+        <div class="grid-two">
+          <div>
+            <h4>🧩 Estructuras de Datos Implementadas</h4>
+            <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));">
+              <div class="card" style="text-align:center; padding:10px;">
+                <div style="font-size:2em;">📊</div>
+                <strong>Arreglos Bidimensionales</strong>
+                <p style="font-size:0.8em; margin:5px 0;">Matrices de datos complejos</p>
+              </div>
+              <div class="card" style="text-align:center; padding:10px;">
+                <div style="font-size:2em;">📋</div>
+                <strong>Arreglos Unidimensionales</strong>
+                <p style="font-size:0.8em; margin:5px 0;">Vectores y listas</p>
+              </div>
+              <div class="card" style="text-align:center; padding:10px;">
+                <div style="font-size:2em;">🔄</div>
+                <strong>Objetos Complejos</strong>
+                <p style="font-size:0.8em; margin:5px 0;">Estructuras anidadas</p>
+              </div>
+              <div class="card" style="text-align:center; padding:10px;">
+                <div style="font-size:2em;">🏗️</div>
+                <strong>Clases ES6</strong>
+                <p style="font-size:0.8em; margin:5px 0;">SistemaGestion</p>
+              </div>
+            </div>
+          </div>
+          
+          <div>
+            <h4>⚙️ Operaciones Implementadas</h4>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+              <button class="btn-like" style="text-align:left;">
+                <span style="font-size:1.2em;">➕</span> INSERTAR
+                <br><small>Crear nuevos registros</small>
+              </button>
+              <button class="btn-like" style="text-align:left;">
+                <span style="font-size:1.2em;">🔍</span> BUSCAR
+                <br><small>Encontrar datos</small>
+              </button>
+              <button class="btn-like" style="text-align:left;">
+                <span style="font-size:1.2em;">✏️</span> EDITAR
+                <br><small>Actualizar información</small>
+              </button>
+              <button class="btn-like" style="text-align:left;">
+                <span style="font-size:1.2em;">🗑️</span> ELIMINAR
+                <br><small>Remover registros</small>
+              </button>
+              <button class="btn-like" style="text-align:left; grid-column: span 2;">
+                <span style="font-size:1.2em;">📊</span> MOSTRAR & ORDENAR
+                <br><small>Visualizar y organizar datos</small>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ejemplos en Tiempo Real -->
+      <div class="card">
+        <h3>🎯 DEMOSTRACION</h3>
+        
+        <div class="grid-two">
+          <!-- Ejemplo 1: Gestión de Clientes -->
+          <div class="card">
+            <h4>👥 Gestión de Clientes</h4>
+            <div id="ejemploClientes">
+              <p><strong>Total clientes:</strong> <span id="totalClientesDemo">0</span></p>
+              <div style="margin:10px 0;">
+                <input type="text" id="nombreClienteDemo" placeholder="Nombre cliente" style="width:100%; margin-bottom:5px;">
+                <button onclick="agregarClienteDemo()" class="btn-like" style="width:100%;">➕ Agregar Cliente</button>
+              </div>
+              <div id="listaClientesDemo" style="max-height:100px; overflow-y:auto; font-size:0.9em;">
+                <!-- Lista de clientes -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Ejemplo 2: Gestión de Servicios -->
+          <div class="card">
+            <h4>🛠️ Gestión de Servicios</h4>
+            <div id="ejemploServicios">
+              <p><strong>Total servicios:</strong> <span id="totalServiciosDemo">0</span></p>
+              <div style="margin:10px 0;">
+                <input type="text" id="nombreServicioDemo" placeholder="Nombre servicio" style="width:100%; margin-bottom:5px;">
+                <button onclick="agregarServicioDemo()" class="btn-like" style="width:100%;">➕ Agregar Servicio</button>
+              </div>
+              <div id="listaServiciosDemo" style="max-height:100px; overflow-y:auto; font-size:0.9em;">
+                <!-- Lista de servicios -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ejemplo 3: Operaciones Avanzadas -->
+        <div class="card" style="margin-top:15px;">
+          <h4>📊 Operaciones Avanzadas</h4>
+          <div class="grid-three">
+            <button onclick="ejemploBuscar()" class="btn-like">
+              🔍 BUSCAR<br><small>Encontrar elementos</small>
+            </button>
+            <button onclick="ejemploOrdenar()" class="btn-like">
+              📊 ORDENAR<br><small>Organizar datos</small>
+            </button>
+            <button onclick="ejemploEstadisticas()" class="btn-like">
+              📈 ESTADÍSTICAS<br><small>Analizar información</small>
+            </button>
+          </div>
+          <div id="resultadoOperaciones" style="margin-top:10px; padding:10px; background:#f8f9fa; border-radius:5px; min-height:50px;">
+            <p style="color:#666; text-align:center;">Realice una operación para ver los resultados</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navegación Rápida a Sistemas -->
+      <div class="card">
+        <h3>🚀 Sistemas Completos por Página</h3>
+        <div class="grid">
+          <div class="card" style="text-align:center;">
+            <h4>👥 Colegios Profesionales</h4>
+            <p>Sistema completo de gestión de afiliados y clientes</p>
+            <a href="colegios.html#sistemaClientes" class="btn-like" style="display:block; margin-top:10px;">Ir al Sistema →</a>
+          </div>
+          <div class="card" style="text-align:center;">
+            <h4>🏢 Servicios Generales</h4>
+            <p>Gestión de proveedores y catálogo de servicios</p>
+            <a href="servicios.html#sistemaProveedores" class="btn-like" style="display:block; margin-top:10px;">Ir al Sistema →</a>
+          </div>
+          <div class="card" style="text-align:center;">
+            <h4>📦 Calculadora</h4>
+            <p>Sistema de inventario y gestión de recursos</p>
+            <a href="calculadora.html#sistemaInventario" class="btn-like" style="display:block; margin-top:10px;">Ir al Sistema →</a>
+          </div>
+          <div class="card" style="text-align:center;">
+            <h4>🛠️ Sistema de Turnos</h4>
+            <p>Gestión completa de servicios institucionales</p>
+            <a href="turnos.html#sistemaServicios" class="btn-like" style="display:block; margin-top:10px;">Ir al Sistema →</a>
+          </div>
+          <div class="card" style="text-align:center;">
+            <h4>📊 Estadísticas Avanzadas</h4>
+            <p>Panel de administración general del sistema</p>
+            <a href="estadisticas-avanzadas.html#panelAdministracion" class="btn-like" style="display:block; margin-top:10px;">Ir al Sistema →</a>
+          </div>
+          <div class="card" style="text-align:center;">
+            <h4>🚨 Sistema de Denuncias</h4>
+            <p>Operaciones CRUD avanzadas con estructuras complejas</p>
+            <a href="denuncias.html#sistemaDenuncias" class="btn-like" style="display:block; margin-top:10px;">Ir al Sistema →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <style>
+      .grid-three {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 1rem;
+      }
+    </style>
+
+
+  <footer>
+    <p>© 2025 Estado Peruano — Colegios Profesionales, Comisarías, Migraciones, Ministerios y Municipalidades.</p>
+    <p>Atención ciudadana: Línea gratuita 0800-00000</p>
+  </footer>
+
+</html>

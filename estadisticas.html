@@ -1,0 +1,110 @@
+<!doctype html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Estadísticas y Encuestas</title>
+  <link rel="stylesheet" href="index.css">
+  <script src="gestion.js"></script>
+</head>
+<body>
+<header>
+  <span class="logo">Estado &amp; Instituciones</span>
+  
+  <!-- Menú hamburguesa para móviles -->
+  <label for="menu-toggle" class="menu-button">
+    <span></span>
+    <span></span>
+    <span></span>
+  </label>
+  <input type="checkbox" id="menu-toggle">
+  
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="colegios.html">Colegios</a>
+    <a href="comisarias.html">Comisarías</a>
+    <a href="migraciones.html">Migraciones</a>
+    <a href="ministerios_municipalidades.html">Ministerios</a>
+    
+    <!-- Menú desplegable para Servicios -->
+    <div class="dropdown">
+      <button class="dropdown-btn">Servicios ▼</button>
+      <div class="dropdown-content">
+        <a href="servicios.html">Servicios Generales</a>
+        <a href="calculadora.html">Calculadora</a>
+        <a href="turnos.html" aria-current="page">Sistema de Turnos</a>
+        <a href="denuncias.html">Denuncias</a>
+      </div>
+    </div>
+    
+    <!-- Menú desplegable para Información -->
+    <div class="dropdown">
+      <button class="dropdown-btn">Información ▼</button>
+      <div class="dropdown-content">
+        <a href="noticias.html">Noticias</a>
+        <a href="estadisticas.html" aria-current="page">Estadísticas</a>
+        <a href="estadisticas-avanzadas.html">Estadísticas Av.</a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+  <main class="container">
+    <section class="section">
+      <h2 class="animated-slide">Participación Ciudadana</h2>
+      <p>Encuesta simulada sobre satisfacción de los servicios públicos. Este formulario representa el control y supervisión ciudadana.</p>
+
+      <form onsubmit="event.preventDefault(); alert('Encuesta enviada (demo).');">
+        <label class="required">1. ¿Cómo califica la atención en instituciones públicas?</label>
+        <select required>
+          <option value="">-- Seleccionar --</option>
+          <option>Excelente</option>
+          <option>Buena</option>
+          <option>Regular</option>
+          <option>Mala</option>
+        </select>
+
+        <label class="required">2. ¿Qué entidad considera más eficiente?</label>
+        <select required>
+          <option>Colegio Profesional</option>
+          <option>Comisaría</option>
+          <option>Migraciones</option>
+          <option>Municipalidad</option>
+        </select>
+
+        <label>3. Comentarios o sugerencias</label>
+        <textarea placeholder="Escriba su opinión..."></textarea>
+
+        <button type="submit">Enviar respuestas</button>
+      </form>
+    </section>
+
+    <section class="section">
+      <h2 class="animated-slide">Estadísticas Generales</h2>
+
+      <div class="chart-container">
+        <div class="chart-bar" style="--value: 80%">
+          <span>Atención</span><div class="bar" style="width: var(--value);"></div>
+        </div>
+        <div class="chart-bar" style="--value: 65%">
+          <span>Seguridad</span><div class="bar" style="width: var(--value);"></div>
+        </div>
+        <div class="chart-bar" style="--value: 70%">
+          <span>Salud</span><div class="bar" style="width: var(--value);"></div>
+        </div>
+        <div class="chart-bar" style="--value: 90%">
+          <span>Educación</span><div class="bar" style="width: var(--value);"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="animated-slide">Conclusión</h2>
+      <p>Los resultados reflejan una percepción positiva en la mayoría de los servicios públicos, especialmente en el sector educativo.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>Portal de Estado e Instituciones - Encuestas y Estadísticas</p>
+  </footer>
+</body>
+</html>

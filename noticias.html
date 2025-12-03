@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Noticias</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+<header>
+  <span class="logo">Estado &amp; Instituciones</span>
+  
+  <!-- Menú hamburguesa para móviles -->
+  <label for="menu-toggle" class="menu-button">
+    <span></span>
+    <span></span>
+    <span></span>
+  </label>
+  <input type="checkbox" id="menu-toggle">
+  
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="colegios.html">Colegios</a>
+    <a href="comisarias.html">Comisarías</a>
+    <a href="migraciones.html">Migraciones</a>
+    <a href="ministerios_municipalidades.html">Ministerios</a>
+    
+    <!-- Menú desplegable para Servicios -->
+    <div class="dropdown">
+      <button class="dropdown-btn">Servicios ▼</button>
+      <div class="dropdown-content">
+        <a href="servicios.html">Servicios Generales</a>
+        <a href="calculadora.html">Calculadora</a>
+        <a href="turnos.html" aria-current="page">Sistema de Turnos</a>
+        <a href="denuncias.html">Denuncias</a>
+      </div>
+    </div>
+    
+    <!-- Menú desplegable para Información -->
+    <div class="dropdown">
+      <button class="dropdown-btn">Información ▼</button>
+      <div class="dropdown-content">
+        <a href="noticias.html" aria-current="page">Noticias</a>
+        <a href="estadisticas.html">Estadísticas</a>
+        <a href="estadisticas-avanzadas.html">Estadísticas Av.</a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+  <main class="container">
+    <section class="section">
+      <h2 class="animated-slide">Noticias y Campañas Informativas</h2>
+      <p>Aqui encontraras un registros de video de cada campaña realizada por Instituciones policiales, ministerios o colegios.</p>
+
+      <!-- GRID de noticias con diferentes tamaños -->
+      <div class="news-grid variable-grid">
+        <article class="news-card big">
+        <video controls width="600" preload="none">
+        <source src="video/video1.mp4" type="video/mp4">
+        Tu navegador no soporta el elemento <code>video</code>.
+        </video>
+          <h3>Campaña de Seguridad Ciudadana</h3>
+          <p>La Policía Nacional promueve la prevención del delito en zonas urbanas.</p>
+          <button class="btn-like shift-right">Me gusta 👍</button>
+        </article>
+
+        <article class="news-card tall">
+          <video controls width="600" preload="none">
+        <source src="video/video2.mp4" type="video/mp4">
+        Tu navegador no soporta el elemento <code>video</code>.
+        </video>
+          <h3>Campaña de Salud Gratuita</h3>
+          <p>Municipalidades locales presentan avances en obras públicas.</p>
+          <button class="btn-like btn-rotate">Me gusta 👍</button>
+        </article>
+
+        <article class="news-card wide">
+          <video controls width="600" preload="none">
+        <source src="video/video3.mp4" type="video/mp4">
+        Tu navegador no soporta el elemento <code>video</code>.
+        </video>
+          <h3>Modernización en Migraciones</h3>
+          <p>Nuevos módulos de atención implementados en todo el país para mejorar los tiempos de espera.</p>
+          <button class="btn-like btn-rotate">Me gusta 👍</button>
+        </article>
+
+        <article class="news-card">
+          <video controls width="600" preload="none">
+        <source src="video/video4.mp4" type="video/mp4">
+        Tu navegador no soporta el elemento <code>video</code>.
+        </video>
+          <h3>Seguridad Escolar</h3>
+          <p>Se refuerza la seguridad en los colegios para el nuevo año escolar.</p>
+          <button class="btn-like btn-rotate">Me gusta 👍</button>
+        </article>
+
+        <article class="news-card">
+          <video controls width="600" preload="none">
+        <source src="video/video5.mp4" type="video/mp4">
+        Tu navegador no soporta el elemento <code>video</code>.
+        </video>
+          <h3>Gestión Municipal</h3>
+          <p>El Ministerio de Salud ofrece chequeos médicos gratuitos a la población.</p>
+          <button class="btn-like btn-rotate">Me gusta 👍</button>
+        </article>
+
+        <article class="news-card big">
+          <video controls width="600" preload="none">
+        <source src="video/video6.mp4" type="video/mp4">
+        Tu navegador no soporta el elemento <code>video</code>.
+        </video>
+          <h3>Protección Ambiental</h3>
+          <p>Campaña ecológica organizada por instituciones locales.</p>
+         <button class="btn-like shift-right">Me gusta 👍</button>
+        </article>
+
+        <article class="news-card">
+          <video controls width="600" preload="none">
+        <source src="video/video7.mp4" type="video/mp4">
+        Tu navegador no soporta el elemento <code>video</code>.
+        </video>
+          <h3>Capacitación Policial</h3>
+          <p>Agentes reciben formación en primeros auxilios y atención al ciudadano.</p>
+          <button class="btn-like btn-rotate">Me gusta 👍</button>
+        </article>
+
+        <article class="news-card">
+          <video controls width="600" preload="none">
+        <source src="video/video8.mp4" type="video/mp4">
+        Tu navegador no soporta el elemento <code>video</code>.
+        </video>
+          <h3>Servicios en Línea</h3>
+          <p>Instituciones ofrecen nuevos canales digitales para sus trámites.</p>
+          <button class="btn-like btn-rotate">Me gusta 👍</button>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Portal de Noticias Institucionales</p>
+  </footer>
+</body>
+</html>

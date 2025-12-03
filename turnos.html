@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Sistema de Turnos - Estado e Instituciones</title>
+  <link rel="stylesheet" href="index.css">
+  <script src="script.js"></script>
+</head>
+<body>
+<header>
+  <span class="logo">Estado &amp; Instituciones</span>
+  
+  <!-- Menú hamburguesa para móviles -->
+  <label for="menu-toggle" class="menu-button">
+    <span></span>
+    <span></span>
+    <span></span>
+  </label>
+  <input type="checkbox" id="menu-toggle">
+  
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="colegios.html">Colegios</a>
+    <a href="comisarias.html">Comisarías</a>
+    <a href="migraciones.html">Migraciones</a>
+    <a href="ministerios_municipalidades.html">Ministerios</a>
+    
+    <!-- Menú desplegable para Servicios -->
+    <div class="dropdown">
+      <button class="dropdown-btn">Servicios ▼</button>
+      <div class="dropdown-content">
+        <a href="servicios.html">Servicios Generales</a>
+        <a href="calculadora.html">Calculadora</a>
+        <a href="turnos.html" aria-current="page">Sistema de Turnos</a>
+        <a href="denuncias.html">Denuncias</a>
+      </div>
+    </div>
+    
+    <!-- Menú desplegable para Información -->
+    <div class="dropdown">
+      <button class="dropdown-btn">Información ▼</button>
+      <div class="dropdown-content">
+        <a href="noticias.html">Noticias</a>
+        <a href="estadisticas.html">Estadísticas</a>
+        <a href="estadisticas-avanzadas.html">Estadísticas Av.</a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+  <main class="container">
+    <section class="section">
+      <h2 class="animated-slide">Sistema de Gestión de Turnos</h2>
+      <p>Programe y gestione turnos para diferentes instituciones públicas. Demostración de estructuras de decisión y control.</p>
+
+      <!-- Formulario para solicitar turno -->
+      <div class="card">
+        <h3>Solicitar Nuevo Turno</h3>
+        <form id="formTurno">
+          <label class="required">Institución:</label>
+          <select id="institucionTurno" required>
+            <option value="">-- Seleccionar --</option>
+            <option value="migraciones">Migraciones</option>
+            <option value="comisaria">Comisaría</option>
+            <option value="municipalidad">Municipalidad</option>
+            <option value="colegio">Colegio Profesional</option>
+          </select>
+
+          <label class="required">Tipo de Servicio:</label>
+          <select id="servicio" required>
+            <option value="">-- Seleccione institución primero --</option>
+          </select>
+
+          <label class="required">Fecha Preferida:</label>
+          <input type="date" id="fecha" required min="<?php echo date('Y-m-d'); ?>">
+
+          <label class="required">Hora Preferida:</label>
+          <select id="hora" required>
+            <option value="">-- Seleccionar --</option>
+            <!-- Se llenará con JavaScript -->
+          </select>
+
+          <label class="required">Prioridad:</label>
+          <select id="prioridad" required>
+            <option value="">-- Seleccionar --</option>
+            <option value="normal">Normal</option>
+            <option value="prioritario">Prioritario</option>
+            <option value="urgente">Urgente</option>
+          </select>
+
+          <label class="required">Documento de Identidad:</label>
+          <input type="text" id="dni" required pattern="[0-9]{8}" placeholder="8 dígitos">
+
+          <button type="button" id="btnVerificarTurno">Verificar Disponibilidad</button>
+          <p id="mensajeVerificacion"></p>
+          <button type="button" id="btnReservarTurno" disabled>Reservar Turno</button>
+          <button type="button" id="btnLimpiarTurno">Limpiar</button>
+        </form>
+      </div>
+
+      <!-- Resultado de verificación -->
+      <div id="resultadoTurno" class="card hidden">
+        <h3>Resultado de Verificación</h3>
+        <div id="detallesTurno"></div>
+      </div>
+
+      <!-- Turnos reservados -->
+      <div class="card">
+        <h3>Mis Turnos Reservados</h3>
+        <div id="listaTurnos" class="chart-container">
+          <p id="mensajeSinTurnos">No hay turnos reservados</p>
+          <!-- Se llenará con JavaScript -->
+        </div>
+      </div>
+
+
+    <!-- NUEVO SISTEMA: Gestión de Servicios -->
+
+    <section class="section">
+      <h2 class="animated-slide">Catálogo de Servicios Institucionales</h2>
+
+      <!-- Formulario Servicios -->
+      <div class="card">
+        <h3>Gestión de Servicios</h3>
+        <form id="formServicio">
+          <input type="hidden" id="servicioId">
+          <div class="grid-two">
+            <div>
+              <label class="required">Nombre del Servicio:</label>
+              <input type="text" id="servicioNombre" required>
+              <label class="required">Descripción:</label>
+              <textarea id="servicioDescripcion" required rows="3"></textarea>
+              <label class="required">Categoría:</label>
+              <select id="servicioCategoria" required>
+                <option value="legal">Legal</option>
+                <option value="tramites">Trámites</option>
+                <option value="consultoria">Consultoría</option>
+                <option value="atencion">Atención al Ciudadano</option>
+                <option value="otros">Otros</option>
+              </select>
+            </div>
+            <div>
+              <label class="required">Precio (S/):</label>
+              <input type="number" id="servicioPrecio" required min="0" step="0.01">
+              <label class="required">Duración:</label>
+              <input type="text" id="servicioDuracion" required placeholder="Ej: 30 min, 2 días">
+              <label>Estado:</label>
+              <select id="servicioEstado">
+                <option value="activo">Activo</option>
+                <option value="inactivo">Inactivo</option>
+                <option value="temporal">Temporalmente No Disponible</option>
+              </select>
+              <label>Institución:</label>
+              <input type="text" id="servicioInstitucion" placeholder="Ej: Migraciones, Municipalidad">
+            </div>
+          </div>
+          <div style="margin-top:15px; display:flex; gap:10px; flex-wrap:wrap;">
+            <button type="button" id="btnInsertarServicio">➕ Agregar Servicio</button>
+            <button type="button" id="btnActualizarServicio" style="display:none;">✏️ Actualizar</button>
+            <button type="button" id="btnCancelarEdicionServ" style="display:none;">❌ Cancelar</button>
+            <button type="button" id="btnLimpiarServicio">🗑️ Limpiar</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Búsqueda y Ordenamiento Servicios -->
+      <div class="card">
+        <h3>Filtrar y Ordenar Servicios</h3>
+        <div class="grid-three">
+          <div>
+            <label>Buscar por:</label>
+            <select id="criterioBusquedaServ">
+              <option value="nombre">Nombre</option>
+              <option value="categoria">Categoría</option>
+              <option value="institucion">Institución</option>
+            </select>
+          </div>
+          <div>
+            <label>Valor:</label>
+            <input type="text" id="valorBusquedaServ" placeholder="Texto a buscar...">
+          </div>
+          <div>
+            <label>Ordenar por:</label>
+            <select id="criterioOrdenServ">
+              <option value="nombre">Nombre</option>
+              <option value="precio">Precio</option>
+              <option value="categoria">Categoría</option>
+            </select>
+            <select id="tipoOrdenServ" style="margin-top:5px;">
+              <option value="asc">Ascendente</option>
+              <option value="desc">Descendente</option>
+            </select>
+          </div>
+        </div>
+        <div style="margin-top:10px; display:flex; gap:10px; flex-wrap:wrap;">
+          <button type="button" id="btnBuscarServicios">🔍 Buscar Servicios</button>
+          <button type="button" id="btnOrdenarServicios">📊 Ordenar Servicios</button>
+          <button type="button" id="btnMostrarTodosServ">📋 Mostrar Todos</button>
+          <button type="button" id="btnServiciosActivos">✅ Solo Activos</button>
+        </div>
+      </div>
+
+      <!-- Lista de Servicios -->
+      <div class="card">
+        <h3>Catálogo de Servicios (<span id="totalServicios">0</span> servicios)</h3>
+        <div class="table-responsive">
+          <table id="tablaServicios">
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Categoría</th>
+                <th>Precio (S/)</th>
+                <th>Duración</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="cuerpoTablaServicios">
+              <!-- Se llenará con JavaScript -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Estadísticas de Servicios -->
+      <div class="card">
+        <h3>Estadísticas de Servicios</h3>
+        <div id="estadisticasServicios" class="grid-three">
+          <!-- Se llenará con JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <style>
+      .grid-three {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+      }
+    </style>
+
+      
+  <footer>
+    <p>Sistema de Turnos - Estado Peruano</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

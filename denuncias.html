@@ -1,0 +1,220 @@
+<!doctype html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Sistema de Denuncias - Estado e Instituciones</title>
+  <link rel="stylesheet" href="index.css">
+  <script src="script.js"></script>
+</head>
+<body>
+<header>
+  <span class="logo">Estado &amp; Instituciones</span>
+  
+  <!-- Menú hamburguesa para móviles -->
+  <label for="menu-toggle" class="menu-button">
+    <span></span>
+    <span></span>
+    <span></span>
+  </label>
+  <input type="checkbox" id="menu-toggle">
+  
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="colegios.html">Colegios</a>
+    <a href="comisarias.html">Comisarías</a>
+    <a href="migraciones.html">Migraciones</a>
+    <a href="ministerios_municipalidades.html">Ministerios</a>
+    
+    <!-- Menú desplegable para Servicios -->
+    <div class="dropdown">
+      <button class="dropdown-btn">Servicios ▼</button>
+      <div class="dropdown-content">
+        <a href="servicios.html">Servicios Generales</a>
+        <a href="calculadora.html">Calculadora</a>
+        <a href="turnos.html" aria-current="page">Sistema de Turnos</a>
+        <a href="denuncias.html" aria-current="page">Denuncias</a>
+      </div>
+    </div>
+    
+    <!-- Menú desplegable para Información -->
+    <div class="dropdown">
+      <button class="dropdown-btn">Información ▼</button>
+      <div class="dropdown-content">
+        <a href="noticias.html">Noticias</a>
+        <a href="estadisticas.html">Estadísticas</a>
+        <a href="estadisticas-avanzadas.html">Estadísticas Av.</a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+  <main class="container">
+    <section class="section">
+      <h2 class="animated-slide">Sistema de Gestión de Denuncias</h2>
+      <p>Registro y seguimiento de denuncias ciudadanas. Demostración de estructuras repetitivas y manipulación del DOM.</p>
+
+      <!-- Formulario de denuncia -->
+      <div class="card">
+        <h3>Registrar Nueva Denuncia</h3>
+        <form id="formDenuncia">
+          <label class="required">Tipo de Denuncia:</label>
+          <select id="tipoDenuncia" required>
+            <option value="">-- Seleccionar --</option>
+            <option value="corrupcion">Corrupción</option>
+            <option value="maltrato">Maltrato institucional</option>
+            <option value="negligencia">Negligencia en servicio</option>
+            <option value="discriminacion">Discriminación</option>
+            <option value="otros">Otros</option>
+          </select>
+
+          <label class="required">Institución Involucrada:</label>
+          <select id="institucionDenuncia" required>
+            <option value="">-- Seleccionar --</option>
+            <option value="migraciones">Migraciones</option>
+            <option value="policia">Policía Nacional</option>
+            <option value="municipalidad">Municipalidad</option>
+            <option value="ministerio">Ministerio</option>
+            <option value="colegio">Colegio Profesional</option>
+          </select>
+
+          <label class="required">Descripción detallada:</label>
+          <textarea id="descripcion" required placeholder="Describa los hechos en detalle..." rows="4"></textarea>
+
+          <label class="required">Fecha de los hechos:</label>
+          <input type="date" id="fechaHechos" required>
+
+          <label>Evidencia (archivos):</label>
+          <input type="file" id="evidencia" multiple accept=".jpg,.png,.pdf,.doc">
+
+          <label>¿Desea permanecer anónimo?</label>
+          <input type="checkbox" id="anonimo">
+
+          <div id="datosDenunciante">
+            <label class="required">Nombre completo:</label>
+            <input type="text" id="nombreDenunciante">
+
+            <label class="required">DNI:</label>
+            <input type="text" id="dniDenunciante" pattern="[0-9]{8}">
+
+            <label class="required">Teléfono:</label>
+            <input type="tel" id="telefono">
+          </div>
+
+          <button type="button" id="btnRegistrarDenuncia">Registrar Denuncia</button>
+          <button type="button" id="btnLimpiarDenuncia">Limpiar Formulario</button>
+        </form>
+      </div>
+
+      <!-- Lista de denuncias registradas -->
+      <div class="card">
+        <h3>Denuncias Registradas</h3>
+        <div class="chart-container">
+          <div id="filtrosDenuncias" class="grid-two">
+            <div>
+              <label>Filtrar por tipo:</label>
+              <select id="filtroTipo">
+                <option value="">Todos los tipos</option>
+                <option value="corrupcion">Corrupción</option>
+                <option value="maltrato">Maltrato</option>
+                <option value="negligencia">Negligencia</option>
+                <option value="discriminacion">Discriminación</option>
+              </select>
+            </div>
+            <div>
+              <label>Filtrar por estado:</label>
+              <select id="filtroEstado">
+                <option value="">Todos los estados</option>
+                <option value="pendiente">Pendiente</option>
+                <option value="investigacion">En investigación</option>
+                <option value="resuelta">Resuelta</option>
+              </select>
+            </div>
+          </div>
+          
+          <div id="listaDenuncias">
+            <p id="mensajeSinDenuncias">No hay denuncias registradas</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ejemplos de estructuras repetitivas -->
+      <div class="card">
+        <h3>Conteo de denuncias</h3>
+        <div class="grid-two">
+          <div>
+            <h4>Por tipo</h4>               <!--For -->
+            <button type="button" id="btnEjemploFor">Por tipo</button>
+            <div id="resultadoFor"></div>
+          </div>
+          <div>
+            <h4>Por institucion</h4>        <!--While -->
+            <button type="button" id="btnEjemploWhile">Por Institucion</button>
+            <div id="resultadoWhile"></div>
+          </div>
+        </div>
+        <div style="margin-top: 15px;">
+          <h4>Denuncias pendientes</h4>     <!--array -->
+          <button type="button" id="btnEjemploForEach">Pendientes</button>
+          <div id="resultadoForEach"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+    <!-- MEJORAS: Sistema de Denuncias con Operaciones -->
+
+    <section class="section">
+      <h2 class="animated-slide">Operaciones Avanzadas en Denuncias</h2>
+
+      <!-- Estadísticas en Tiempo Real -->
+      <div class="card">
+        <h3>📈 Estadísticas de Denuncias</h3>
+        <div id="estadisticasDenuncias" class="grid">
+          <!-- Se llenará con JavaScript -->
+        </div>
+      </div>
+
+      <!-- Operaciones Masivas CRUD -->
+      <div class="card">
+        <h3>🔄 Operaciones Masivas</h3>
+        <div class="grid-two">
+          <div>
+            <h4>Filtrar y Ordenar Denuncias</h4>
+            <select id="filtroAvanzado">
+              <option value="todas">Todas las Denuncias</option>
+              <option value="pendiente">Solo Pendientes</option>
+              <option value="investigacion">En Investigación</option>
+              <option value="resuelta">Resueltas</option>
+            </select>
+            <select id="ordenAvanzado" style="margin-top:5px;">
+              <option value="fecha">Ordenar por Fecha</option>
+              <option value="tipo">Ordenar por Tipo</option>
+              <option value="institucion">Ordenar por Institución</option>
+            </select>
+            <button type="button" id="btnAplicarFiltros" style="margin-top:10px; width:100%;">Aplicar Filtros</button>
+          </div>
+          <div>
+            <h4>Operaciones por Lotes</h4>
+            <button type="button" id="btnExportarDenuncias" class="btn-like" style="width:100%; margin-bottom:5px;">
+              📤 Exportar Denuncias
+            </button>
+            <button type="button" id="btnMarcarTodasInvestigacion" class="btn-like" style="width:100%; margin-bottom:5px;">
+              🔄 Marcar Todas como Investigación
+            </button>
+            <button type="button" id="btnGenerarReporte" class="btn-like" style="width:100%;">
+              📊 Generar Reporte Estadístico
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ejemplos Avanzados de Estructuras de Datos -->
+      <div class="card">  
+    
+  <footer>
+    <p>Sistema de Denuncias - Estado Peruano</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

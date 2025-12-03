@@ -1,0 +1,232 @@
+<!doctype html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Calculadora de Trámites - Estado e Instituciones</title>
+  <link rel="stylesheet" href="index.css">
+  <script src="script.js"></script>
+</head>
+<body>
+<header>
+  <span class="logo">Estado &amp; Instituciones</span>
+  
+  <!-- Menú hamburguesa para móviles -->
+  <label for="menu-toggle" class="menu-button">
+    <span></span>
+    <span></span>
+    <span></span>
+  </label>
+  <input type="checkbox" id="menu-toggle">
+  
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="colegios.html">Colegios</a>
+    <a href="comisarias.html">Comisarías</a>
+    <a href="migraciones.html">Migraciones</a>
+    <a href="ministerios_municipalidades.html">Ministerios</a>
+    
+    <!-- Menú desplegable para Servicios -->
+    <div class="dropdown">
+      <button class="dropdown-btn">Servicios ▼</button>
+      <div class="dropdown-content">
+        <a href="servicios.html">Servicios Generales</a>
+        <a href="calculadora.html" aria-current="page">Calculadora</a>
+        <a href="turnos.html" aria-current="page">Sistema de Turnos</a>
+        <a href="denuncias.html">Denuncias</a>
+      </div>
+    </div>
+    
+    <!-- Menú desplegable para Información -->
+    <div class="dropdown">
+      <button class="dropdown-btn">Información ▼</button>
+      <div class="dropdown-content">
+        <a href="noticias.html">Noticias</a>
+        <a href="estadisticas.html">Estadísticas</a>
+        <a href="estadisticas-avanzadas.html">Estadísticas Av.</a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+  <main class="container">
+    <section class="section">
+      <h2 class="animated-slide">Calculadora de Costos y Tiempos de Trámites</h2>
+      <p>Calcule los costos estimados y tiempos de procesamiento para diferentes trámites institucionales.</p>
+
+      <!-- Formulario de cálculo -->
+      <div class="card">
+        <form id="formCalculadora">
+          <label class="required">Tipo de Institución:</label>
+          <select id="institucion" required>
+            <option value="">-- Seleccionar --</option>
+            <option value="migraciones">Migraciones</option>
+            <option value="colegio">Colegio Profesional</option>
+            <option value="municipalidad">Municipalidad</option>
+            <option value="comisaria">Comisaría</option>
+          </select>
+
+          <label class="required">Trámite Específico:</label>
+          <select id="tramite" required>
+            <option value="">-- Seleccione primero la institución --</option>
+          </select>
+
+          <label class="required">Cantidad de trámites:</label>
+          <input type="number" id="cantidad" min="1" max="10" value="1" required>
+
+          <label>¿Es urgente?</label>
+          <input type="checkbox" id="urgente">
+
+          <button type="button" id="btnCalcular">Calcular Costo</button>
+          <button type="button" id="btnLimpiar">Limpiar</button>
+        </form>
+      </div>
+
+      <!-- Resultados del cálculo -->
+      <div id="resultado" class="card hidden">
+        <h3>Resultado del Cálculo</h3>
+        <div id="detallesResultado"></div>
+      </div>
+
+      <!-- Tabla de precios de referencia -->
+      <div class="card">
+        <h3>Tarifas de Referencia</h3>
+        <div class="table-responsive">
+          <table id="tablaPrecios">
+            <thead>
+              <tr>
+                <th>Institución</th>
+                <th>Trámite</th>
+                <th>Costo Base (S/)</th>
+                <th>Tiempo (días)</th>
+              </tr>
+            </thead>
+            <tbody id="cuerpoTabla">
+              <!-- Se llenará con JavaScript -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+      
+          <!-- =========================================================== -->
+    <!-- NUEVO SISTEMA: Gestión de Inventario -->
+    <!-- =========================================================== -->
+    <section class="section">
+      <h2 class="animated-slide">Sistema de Gestión de Inventario</h2>
+      <p>Gestión completa CRUD de recursos e inventario institucional.</p>
+
+      <!-- Formulario CRUD Inventario -->
+      <div class="card">
+        <h3>Gestión de Inventario</h3>
+        <form id="formInventario">
+          <input type="hidden" id="itemId">
+          <div class="grid-two">
+            <div>
+              <label class="required">Nombre del Item:</label>
+              <input type="text" id="itemNombre" required>
+              <label class="required">Categoría:</label>
+              <select id="itemCategoria" required>
+                <option value="equipos">Equipos</option>
+                <option value="mobiliario">Mobiliario</option>
+                <option value="materiales">Materiales</option>
+                <option value="tecnologia">Tecnología</option>
+              </select>
+              <label class="required">Cantidad:</label>
+              <input type="number" id="itemCantidad" required min="1">
+            </div>
+            <div>
+              <label class="required">Precio Unitario (S/):</label>
+              <input type="number" id="itemPrecio" required min="0" step="0.01">
+              <label>Proveedor:</label>
+              <input type="text" id="itemProveedor">
+              <label>Estado:</label>
+              <select id="itemEstado">
+                <option value="disponible">Disponible</option>
+                <option value="en-uso">En Uso</option>
+                <option value="mantenimiento">Mantenimiento</option>
+              </select>
+            </div>
+          </div>
+          <div style="margin-top:15px; display:flex; gap:10px; flex-wrap:wrap;">
+            <button type="button" id="btnInsertarItem">➕ Insertar Item</button>
+            <button type="button" id="btnActualizarItem" style="display:none;">✏️ Actualizar</button>
+            <button type="button" id="btnCancelarEdicionInv" style="display:none;">❌ Cancelar</button>
+            <button type="button" id="btnLimpiarInventario">🗑️ Limpiar</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Búsqueda y Ordenamiento Inventario -->
+      <div class="card">
+        <h3>Filtrar y Ordenar Inventario</h3>
+        <div class="grid-two">
+          <div>
+            <label>Buscar por:</label>
+            <select id="criterioBusquedaInv">
+              <option value="nombre">Nombre</option>
+              <option value="categoria">Categoría</option>
+              <option value="proveedor">Proveedor</option>
+            </select>
+            <input type="text" id="valorBusquedaInv" placeholder="Texto a buscar..." style="margin-top:5px;">
+          </div>
+          <div>
+            <label>Ordenar por:</label>
+            <select id="criterioOrdenInv">
+              <option value="nombre">Nombre</option>
+              <option value="cantidad">Cantidad</option>
+              <option value="precio">Precio</option>
+              <option value="categoria">Categoría</option>
+            </select>
+            <select id="tipoOrdenInv" style="margin-top:5px;">
+              <option value="asc">Ascendente</option>
+              <option value="desc">Descendente</option>
+            </select>
+          </div>
+        </div>
+        <div style="margin-top:10px; display:flex; gap:10px;">
+          <button type="button" id="btnBuscarInventario">🔍 Buscar</button>
+          <button type="button" id="btnOrdenarInventario">📊 Ordenar</button>
+          <button type="button" id="btnMostrarTodoInv">📋 Mostrar Todo</button>
+        </div>
+      </div>
+
+      <!-- Lista de Inventario -->
+      <div class="card">
+        <h3>Inventario Institucional (<span id="totalItems">0</span> items)</h3>
+        <div class="table-responsive">
+          <table id="tablaInventario">
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Categoría</th>
+                <th>Cantidad</th>
+                <th>Precio (S/)</th>
+                <th>Valor Total</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="cuerpoTablaInventario">
+              <!-- Se llenará con JavaScript -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Resumen de Inventario -->
+      <div class="card">
+        <h3>Resumen del Inventario</h3>
+        <div id="resumenInventario" class="grid-two">
+          <!-- Se llenará con JavaScript -->
+        </div>
+      </div>
+    </section>
+
+
+  <footer>
+    <p>Calculadora de Trámites - Estado Peruano</p>
+  </footer>
+
+  <!-- Incluir el archivo JavaScript principal -->
+  <script src="script.js"></script>
+</body>
+</html>

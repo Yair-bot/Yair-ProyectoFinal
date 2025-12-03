@@ -1,0 +1,304 @@
+<!doctype html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Colegios Profesionales</title>
+  <link rel="stylesheet" href="index.css">
+  <script src="script.js"></script>
+</head>
+<body>
+<header>
+  <span class="logo">Estado &amp; Instituciones</span>
+  
+  <!-- Menú hamburguesa para móviles -->
+  <label for="menu-toggle" class="menu-button">
+    <span></span>
+    <span></span>
+    <span></span>
+  </label>
+  <input type="checkbox" id="menu-toggle">
+  
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="colegios.html" aria-current="page">Colegios</a>
+    <a href="comisarias.html">Comisarías</a>
+    <a href="migraciones.html">Migraciones</a>
+    <a href="ministerios_municipalidades.html">Ministerios</a>
+    
+    <!-- Menú desplegable para Servicios -->
+    <div class="dropdown">
+      <button class="dropdown-btn">Servicios ▼</button>
+      <div class="dropdown-content">
+        <a href="servicios.html">Servicios Generales</a>
+        <a href="calculadora.html">Calculadora</a>
+        <a href="turnos.html" aria-current="page">Sistema de Turnos</a>
+        <a href="denuncias.html">Denuncias</a>
+      </div>
+    </div>
+    
+    <!-- Menú desplegable para Información -->
+    <div class="dropdown">
+      <button class="dropdown-btn">Información ▼</button>
+      <div class="dropdown-content">
+        <a href="noticias.html">Noticias</a>
+        <a href="estadisticas.html">Estadísticas</a>
+        <a href="estadisticas-avanzadas.html">Estadísticas Av.</a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+  <main class="container">
+    <section class="section">
+      <h2 style="animation: fadeInUp 1s ease;">Listado de Colegios Profesionales</h2>
+      <div class="table-responsive card">
+        <table>
+          <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Especialidad</th>
+                <th>Contacto</th>
+                <th>Web</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+                <td>1</td>
+                <td>Colegio de Ingenieros</td>
+                <td>Ingeniería Civil</td>
+                <td>+51 000 000</td>
+                <td>
+                    <a href="#">Visitar</a>
+                </td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Colegio de Abogados</td>
+                <td>Derecho</td>
+                <td>+51 111 111</td>
+                <td>
+                    <a href="#">Visitar</a>
+                </td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Colegio de Arquitectos</td>
+                <td>Arquitectura</td>
+                <td>+51 222 222</td>
+                <td>
+                    <a href="#">Visitar</a>
+                </td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Colegio de Médicos</td>
+                <td>Médica</td>
+                <td>+51 333 333</td>
+                <td>
+                    <a href="#">Visitar</a>
+                </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 style="animation: fadeInUp 1s ease;">Formulario de afiliación</h2>
+      <form>
+        <label class="required">Nombre completo</label>
+        <input type="text" required>
+        <label class="required">DNI / Documento</label>
+        <input type="text" required>
+        <label>Colegio al que desea afiliarse</label>
+        <select required>
+          <option value="">-- Seleccionar --</option>
+          <option>Colegio de Ingenieros</option>
+          <option>Colegio de Abogados</option>
+          <option>Colegio de Arquitectos</option>
+          <option>Colegio de Médicos</option>
+        </select>
+        <label>Adjuntar documento (PDF)</label>
+        <input type="file" accept=".pdf">
+        <button type="submit">Enviar solicitud</button>
+      </form>
+    </section>
+
+    <section class="section">
+      <h2 style="animation: fadeInUp 1s ease;">Recursos</h2>
+      <div class="grid">
+        <div class="card">
+          <h3 class="card-title">Reglamentos</h3>
+          <p class="card-text">Documentos y normativa.</p>
+        </div>
+        <div class="card">
+          <h3 class="card-title">Servicios en línea</h3>
+          <p class="card-text">Acceso a trámites.</p>
+        </div>
+        <div class="card">
+          <h3 class="card-title">Turnos y citas</h3>
+          <p class="card-text">Reservas y atención.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Filtrado de colegios por especialidad
+        const tabla = document.querySelector('table');
+        if (tabla) {
+            const filas = tabla.querySelectorAll('tbody tr');
+
+            // Agregar campo de búsqueda
+            const buscador = document.createElement('input');
+            buscador.type = 'text';
+            buscador.placeholder = '🔍 Buscar por especialidad...';
+            buscador.style.marginBottom = '15px';
+            buscador.style.padding = '8px';
+            buscador.style.width = '100%';
+            buscador.style.border = '1px solid #ddd';
+            buscador.style.borderRadius = '4px';
+
+            tabla.parentNode.insertBefore(buscador, tabla);
+
+            buscador.addEventListener('input', function() {
+                const filtro = this.value.toLowerCase();
+
+                filas.forEach(fila => {
+                    const especialidad = fila.cells[2].textContent.toLowerCase();
+                    fila.style.display = especialidad.includes(filtro) ? '' : 'none';
+                });
+            });
+        }
+
+        // Validación de formulario de afiliación
+        const formAfiliacion = document.querySelector('form');
+        if (formAfiliacion) {
+            formAfiliacion.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('📋 Solicitud de afiliación enviada\n\nSerá contactado pronto.');
+                this.reset();
+            });
+        }
+    });
+    </script>
+    
+
+    <!-- NUEVO SISTEMA: Gestión de Afiliados/Clientes -->
+
+    <section class="section">
+      <h2 class="animated-slide">Sistema de Gestión de Afiliados</h2>
+
+      <!-- Formulario -->
+      <div class="card">
+        <h3>Gestión de Afiliados</h3>
+        <form id="formCliente">
+          <input type="hidden" id="clienteId">
+          <div class="grid-two">
+            <div>
+              <label class="required">Nombre:</label>
+              <input type="text" id="clienteNombre" required>
+              <label class="required">DNI:</label>
+              <input type="text" id="clienteDni" required pattern="[0-9]{8}">
+              <label class="required">Email:</label>
+              <input type="email" id="clienteEmail" required>
+            </div>
+            <div>
+              <label class="required">Teléfono:</label>
+              <input type="text" id="clienteTelefono" required>
+              <label>Dirección:</label>
+              <input type="text" id="clienteDireccion">
+              <label>Tipo:</label>
+              <select id="clienteTipo">
+                <option value="afiliado">Afiliado</option>
+                <option value="estudiante">Estudiante</option>
+                <option value="profesional">Profesional</option>
+              </select>
+            </div>
+          </div>
+          <div style="margin-top:15px; display:flex; gap:10px; flex-wrap:wrap;">
+            <button type="button" id="btnInsertarCliente">➕ Insertar</button>
+            <button type="button" id="btnActualizarCliente" style="display:none;">✏️ Actualizar</button>
+            <button type="button" id="btnCancelarEdicion" style="display:none;">❌ Cancelar</button>
+            <button type="button" id="btnLimpiarCliente">🗑️ Limpiar</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Búsqueda y Filtros -->
+      <div class="card">
+        <h3>Buscar Afiliados</h3>
+        <div class="grid-two">
+          <div>
+            <label>Criterio:</label>
+            <select id="criterioBusqueda">
+              <option value="nombre">Nombre</option>
+              <option value="dni">DNI</option>
+              <option value="email">Email</option>
+              <option value="tipo">Tipo</option>
+            </select>
+          </div>
+          <div>
+            <label>Valor:</label>
+            <input type="text" id="valorBusqueda" placeholder="Texto a buscar...">
+          </div>
+        </div>
+        <div style="margin-top:10px; display:flex; gap:10px;">
+          <button type="button" id="btnBuscarClientes">🔍 Buscar</button>
+          <button type="button" id="btnMostrarTodos">📋 Mostrar Todos</button>
+        </div>
+      </div>
+
+      <!-- Ordenamiento -->
+      <div class="card">
+        <h3>Ordenar Afiliados</h3>
+        <div class="grid-two">
+          <div>
+            <label>Ordenar por:</label>
+            <select id="criterioOrden">
+              <option value="nombre">Nombre</option>
+              <option value="fechaRegistro">Fecha Registro</option>
+              <option value="tipo">Tipo</option>
+            </select>
+          </div>
+          <div>
+            <label>Orden:</label>
+            <select id="tipoOrden">
+              <option value="asc">Ascendente (A-Z)</option>
+              <option value="desc">Descendente (Z-A)</option>
+            </select>
+          </div>
+        </div>
+        <button type="button" id="btnOrdenarClientes" style="margin-top:10px;">📊 Ordenar</button>
+      </div>
+
+      <!-- Lista de Clientes -->
+      <div class="card">
+        <h3>Lista de Afiliados (<span id="totalClientes">0</span>)</h3>
+        <div class="table-responsive">
+          <table id="tablaClientes">
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>DNI</th>
+                <th>Email</th>
+                <th>Tipo</th>
+                <th>Fecha Registro</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="cuerpoTablaClientes">
+              <!-- Se llenará con JavaScript -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+    
+  <footer>
+    <p>Colegios Profesionales</p>
+  </footer>
+</body>
+</html>
